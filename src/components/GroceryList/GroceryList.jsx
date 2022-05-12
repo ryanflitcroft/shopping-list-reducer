@@ -1,5 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
+import ItemForm from '../ItemForm/ItemForm';
 
 export default function GroceryList() {
-  return <section>GroceryList</section>;
+  const [groceriesList, setGroceriesList] = useState([]);
+
+  return (
+    <>
+      <ItemForm />
+      <section>GroceryList</section>
+    </>
+  );
 }
