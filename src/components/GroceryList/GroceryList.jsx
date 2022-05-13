@@ -17,9 +17,13 @@ export default function GroceryList() {
     <>
       <ItemForm addListItem={addListItem} />
       <section>
-        {groceriesList.map((item, i) => (
-          <GroceryItem key={`${item.id}${i}`} item={item} />
-        ))}
+        <ul>
+          {groceriesList.map((item, i) => (
+            <li key={`${item.id}${i}`}>
+              <GroceryItem item={item} />
+            </li>
+          ))}
+        </ul>
       </section>
     </>
   );
