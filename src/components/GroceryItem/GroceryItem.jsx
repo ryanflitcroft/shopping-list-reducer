@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 export default function GroceryItem({ item }) {
   return (
-    <div>
-      {` id: ${item.id} `}
-      {` item: ${item.item} `}
-      {` qty: ${item.quantity} `}
-      {` complete: ${item.complete.toString()} `}
-    </div>
+    <>
+      <input type="checkbox" name={item.item} value={item.item} />
+      <label htmlFor={item.item}>
+        {item.item} - {item.quantity}
+      </label>
+    </>
   );
 }
