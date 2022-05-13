@@ -1,0 +1,23 @@
+.itemList li:nth-child(even) {
+  background: rgb(198, 198, 198);
+}
+
+.itemList li:nth-child(odd) {
+  background: rgb(230, 230, 230);
+}
+
+.itemList li {
+  width: 365px;
+  padding: 0.5em 1em;
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  align-items: center;
+}
+
+.itemList li label {
+  margin: 0 1em;
+}
+
+.itemList li div {
+  text-align: center;
+}

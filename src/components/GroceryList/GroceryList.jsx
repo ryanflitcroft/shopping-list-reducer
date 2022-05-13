@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import GroceryItem from '../GroceryItem/GroceryItem';
 import ItemForm from '../ItemForm/ItemForm';
+import Styles from './GroceryList.css';
 
 export default function GroceryList() {
   const [groceriesList, setGroceriesList] = useState([
-    { id: 1, item: 'veggie dogs', quantity: 3, complete: false },
-    { id: 2, item: 'bananas', quantity: 2, complete: false },
-    { id: 3, item: 'coffee', quantity: 7, complete: false },
+    { id: 1, item: 'veggie dogs', complete: false },
+    { id: 2, item: 'bananas', complete: false },
+    { id: 3, item: 'coffee', complete: false },
   ]);
 
   function addListItem(item) {
@@ -16,7 +17,7 @@ export default function GroceryList() {
   return (
     <>
       <ItemForm addListItem={addListItem} />
-      <section>
+      <section className={Styles.itemList}>
         <ul>
           {groceriesList.map((item, i) => (
             <li key={`${item.id}${i}`}>
