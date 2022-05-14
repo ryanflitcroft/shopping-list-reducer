@@ -1,15 +1,20 @@
 import React, { useState } from 'react';
 import Styles from './GroceryItem.css';
 
-export default function GroceryItem({ item, deleteListItem }) {
+export default function GroceryItem({ item, deleteListItem, updateListItem }) {
   const [isEditing, setIsEditing] = useState(false);
 
   const handleChecked = (e) => {
-    // update item for complete (e.target.checked);
+    updateListItem({ ...item, complete: e.target.checked });
   };
 
-  const handleUpdateItem = (id, payload) => {
-    // update item by id
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsEditing(false);
+  };
+
+  const handleUpdateItem = (e) => {
+    updateListItem({ ...item, item: e.target.value });
   };
 
   const handleDeleteItem = () => {
@@ -43,7 +48,7 @@ export default function GroceryItem({ item, deleteListItem }) {
   } else {
     content = (
       <>
-        <form>
+        <form id="updateForm" onSubmit={handleSubmit}>
           <label htmlFor={item.item}>Update:</label>
           <input
             type="text"
@@ -53,7 +58,7 @@ export default function GroceryItem({ item, deleteListItem }) {
           />
         </form>
         <div>
-          <button title="Save Item" onClick={() => setIsEditing(false)}>
+          <button form="updateForm" type="submit" title="Save Item">
             💾
           </button>
           <button title="Delete Item" onClick={handleDeleteItem}>
@@ -64,22 +69,5 @@ export default function GroceryItem({ item, deleteListItem }) {
     );
   }
 
-  return (
-    // <>
-    //   <form>
-    //     <input
-    //       type="checkbox"
-    //       name={item.item}
-    //       value={item.item}
-    //       onChange={handleChange}
-    //     />
-    //     <label htmlFor={item.item}>{item.item}</label>
-    //   </form>
-    //   <div>
-    //     <button title="Update Item">✏️</button>
-    //     <button title="Delete Item">❌</button>
-    //   </div>
-    // </>
-    content
-  );
+  return content;
 }

@@ -15,6 +15,17 @@ const groceriesListReducer = (state, action) => {
       return [...state, action.payload];
     case 'DELETE_ITEM':
       return state.filter((item) => item.id !== action.payload.id);
+    case 'UPDATE_ITEM':
+      return state.map((item) => {
+        if (item.id === action.payload.item.id) {
+          return {
+            ...item,
+            complete: action.payload.item.complete,
+            item: action.payload.item.item,
+          };
+        }
+        return item;
+      });
     default:
       throw new Error(`Action type ${action.type} is not supported.`);
   }
@@ -25,19 +36,17 @@ export default function GroceryList() {
     groceriesListReducer,
     initialList
   );
-  // const [groceriesList, setGroceriesList] = useState([
-  //   { id: 1, item: 'veggie dogs', complete: false },
-  //   { id: 2, item: 'bananas', complete: false },
-  //   { id: 3, item: 'coffee', complete: false },
-  // ]);
 
   function addListItem(item) {
-    // setGroceriesList([...groceriesList, item]);
     dispatch({ type: 'ADD_ITEM', payload: item });
   }
 
   function deleteListItem(id) {
     dispatch({ type: 'DELETE_ITEM', payload: { id } });
+  }
+
+  function updateListItem(item) {
+    dispatch({ type: 'UPDATE_ITEM', payload: { item } });
   }
 
   return (
@@ -47,7 +56,11 @@ export default function GroceryList() {
         <ul>
           {groceriesList.map((item, i) => (
             <li key={`${item.id}${i}`}>
-              <GroceryItem item={item} deleteListItem={deleteListItem} />
+              <GroceryItem
+                item={item}
+                deleteListItem={deleteListItem}
+                updateListItem={updateListItem}
+              />
             </li>
           ))}
         </ul>
