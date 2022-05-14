@@ -20,8 +20,8 @@ const groceriesListReducer = (state, action) => {
         if (item.id === action.payload.item.id) {
           return {
             ...item,
-            complete: action.payload.item.complete,
             item: action.payload.item.item,
+            complete: action.payload.item.complete,
           };
         }
         return item;

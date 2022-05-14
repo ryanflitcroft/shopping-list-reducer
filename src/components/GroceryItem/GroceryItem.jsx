@@ -8,17 +8,19 @@ export default function GroceryItem({ item, deleteListItem, updateListItem }) {
     updateListItem({ ...item, complete: e.target.checked });
   };
 
-  const handleSubmit = (e) => {
+  const toggleIsEditing = (e) => {
     e.preventDefault();
-    setIsEditing(false);
+    setIsEditing(isEditing ? false : true);
   };
 
   const handleUpdateItem = (e) => {
-    updateListItem({ ...item, item: e.target.value });
+    updateListItem({
+      ...item,
+      item: e.target.value,
+    });
   };
 
   const handleDeleteItem = () => {
-    // delete item by id
     deleteListItem(item.id);
   };
 
@@ -29,6 +31,7 @@ export default function GroceryItem({ item, deleteListItem, updateListItem }) {
         <form>
           <input
             type="checkbox"
+            checked={item.complete}
             name={item.item}
             value={item.item}
             onChange={handleChecked}
@@ -36,10 +39,10 @@ export default function GroceryItem({ item, deleteListItem, updateListItem }) {
           <label htmlFor={item.item}>{item.item}</label>
         </form>
         <div>
-          <button title="Update Item" onClick={() => setIsEditing(true)}>
+          <button type="button" title="Update Item" onClick={toggleIsEditing}>
             ✏️
           </button>
-          <button title="Delete Item" onClick={handleDeleteItem}>
+          <button type="button" title="Delete Item" onClick={handleDeleteItem}>
             ❌
           </button>
         </div>
@@ -48,7 +51,7 @@ export default function GroceryItem({ item, deleteListItem, updateListItem }) {
   } else {
     content = (
       <>
-        <form id="updateForm" onSubmit={handleSubmit}>
+        <form onSubmit={toggleIsEditing}>
           <label htmlFor={item.item}>Update:</label>
           <input
             type="text"
@@ -58,10 +61,10 @@ export default function GroceryItem({ item, deleteListItem, updateListItem }) {
           />
         </form>
         <div>
-          <button form="updateForm" type="submit" title="Save Item">
+          <button type="submit" onClick={toggleIsEditing} title="Save Item">
             💾
           </button>
-          <button title="Delete Item" onClick={handleDeleteItem}>
+          <button type="button" title="Delete Item" onClick={handleDeleteItem}>
             ❌
           </button>
         </div>
