@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import Styles from './GroceryItem.css';
 
-export default function GroceryItem({ item }) {
+export default function GroceryItem({ item, deleteListItem }) {
   const [isEditing, setIsEditing] = useState(false);
 
-  const handleChange = (e) => {
-    setIsEditing(e.target.checked);
+  const handleChecked = (e) => {
+    // update item for complete (e.target.checked);
   };
 
   const handleUpdateItem = (id, payload) => {
     // update item by id
   };
 
-  const handleDeleteItem = (id) => {
+  const handleDeleteItem = () => {
     // delete item by id
+    deleteListItem(item.id);
   };
 
   let content;
@@ -25,7 +26,7 @@ export default function GroceryItem({ item }) {
             type="checkbox"
             name={item.item}
             value={item.item}
-            onChange={handleChange}
+            onChange={handleChecked}
           />
           <label htmlFor={item.item}>{item.item}</label>
         </form>
