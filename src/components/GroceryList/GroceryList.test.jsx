@@ -48,7 +48,7 @@ describe('renders component GroceryList', () => {
         <GroceryList />
       </GroceryProvider>
     );
-    const inputs = screen.getAllByRole('checkbox');
+    screen.getAllByRole('checkbox');
     const labels = screen.getAllByTestId('checkbox-label');
     expect(labels[0]).not.toHaveTextContent('test item');
 
@@ -68,5 +68,17 @@ describe('renders component GroceryList', () => {
     const updatedLabels = screen.getAllByTestId('checkbox-label');
     const updatedLabel = screen.getByText('test item');
     expect(updatedLabels[0]).toEqual(updatedLabel);
+  });
+
+  it('should updated attribute checked onclick for checkboxInputs', () => {
+    render(
+      <GroceryProvider>
+        <GroceryList />
+      </GroceryProvider>
+    );
+    const checkboxInputs = screen.getAllByRole('checkbox');
+    expect(checkboxInputs[0]).not.toBeChecked();
+    userEvent.click(checkboxInputs[0]);
+    expect(checkboxInputs[0]).toBeChecked();
   });
 });
