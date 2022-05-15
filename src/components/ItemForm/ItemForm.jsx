@@ -33,7 +33,10 @@ export default function ItemForm() {
           onChange={(e) => setItemValue(e.target.value)}
           required
         />
-        <div>
+        <div
+          role="presentation"
+          aria-label="container for add item button and delete all items button"
+        >
           <button
             form="item-form"
             type="submit"
