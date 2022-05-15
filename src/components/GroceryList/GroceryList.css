@@ -1,9 +1,9 @@
 .itemList li:nth-child(even) {
-  background: rgb(198, 198, 198);
+  background-image: linear-gradient(to top, #d5d4d055 0%, #d5d4d055 1%, #eeeeec55 31%, #efeeec55 75%, #e9e9e755 100%);
 }
 
 .itemList li:nth-child(odd) {
-  background: rgb(230, 230, 230);
+  background-image: linear-gradient(to top, #c4c5c755 0%, #dcdddf55 52%, #ebebeb55 100%);
 }
 
 .itemList li {
@@ -20,4 +20,9 @@
 
 .itemList li div {
   text-align: center;
+}
+
+p.itemList {
+  font-size: 1.5em;
+  margin: 3em 0;
 }

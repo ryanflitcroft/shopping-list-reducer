@@ -1,0 +1,11 @@
+div.container {
+  width: 365px;
+  background-image: linear-gradient(to top, #0ba36033 0%, #3cba9233 100%);
+  padding: 3px;
+}
+
+div.progress {
+  background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
+  border-radius: 0 1em 1em 0;
+  padding: 0.05em;
+}

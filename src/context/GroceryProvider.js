@@ -56,12 +56,21 @@ export default function GroceryProvider({ children }) {
     dispatch({ type: 'DELETE_ALL' });
   }
 
+  const getAverageComplete = () => {
+    return Math.floor(
+      (groceriesList.filter((item) => item.complete).length /
+        groceriesList.length) *
+        100
+    );
+  };
+
   const groceryStateAndActions = {
     groceriesList,
     addListItem,
     updateListItem,
     deleteListItem,
     deleteAllListItems,
+    getAverageComplete,
   };
 
   return (
