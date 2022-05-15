@@ -5,6 +5,7 @@ div.container {
 }
 
 div.progress {
+  transition: width 200ms;
   background-image: linear-gradient(to top, #0ba360 0%, #3cba92 100%);
   border-radius: 0 1em 1em 0;
   padding: 0.05em;

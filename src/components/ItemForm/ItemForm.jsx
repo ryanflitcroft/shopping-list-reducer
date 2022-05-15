@@ -23,7 +23,12 @@ export default function ItemForm() {
 
   return (
     <>
-      <form id="item-form" className={Styles.itemForm} onSubmit={handleSubmit}>
+      <form
+        id="item-form"
+        aria-label="submit text input to add an item to you list"
+        className={Styles.itemForm}
+        onSubmit={handleSubmit}
+      >
         <label htmlFor="item">Add an item:</label>
         <input
           type="text"

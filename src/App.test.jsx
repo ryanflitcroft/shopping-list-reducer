@@ -10,8 +10,8 @@ describe('renders component App', () => {
   );
 
   it('should render layout elements header, main, footer', () => {
-    expect(screen.getByRole('banner').nodeName).toBe('HEADER');
-    expect(screen.getByRole('main').nodeName).toBe('MAIN');
-    expect(screen.getByRole('contentinfo').nodeName).toBe('FOOTER');
+    const header = screen.getByRole('banner');
+    const main = screen.getByRole('main');
+    const footer = screen.getByRole('contentinfo');
   });
 });
