@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useGroceryContext } from '../../hooks/useGroceryContext';
 import Styles from './GroceryItem.css';
 
-export default function GroceryItem({ item, deleteListItem, updateListItem }) {
+export default function GroceryItem({ item }) {
+  const { deleteListItem, updateListItem } = useGroceryContext();
   const [isEditing, setIsEditing] = useState(false);
 
   const handleChecked = (e) => {

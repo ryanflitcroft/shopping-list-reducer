@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
+import { useGroceryContext } from '../../hooks/useGroceryContext';
 import Styles from './ItemForm.css';
 
-export default function ItemForm({ addListItem }) {
+export default function ItemForm() {
+  const { addListItem } = useGroceryContext();
   const [itemValue, setItemValue] = useState('');
 
   const handleSubmit = (e) => {

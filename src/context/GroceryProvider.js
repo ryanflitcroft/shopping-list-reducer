@@ -1,6 +1,6 @@
-import { useContext, useReducer } from 'react';
+import { createContext, useReducer } from 'react';
 
-export const GroceryContext = useContext();
+export const GroceryContext = createContext();
 
 const initialList = [
   { id: 1, item: 'veggies', complete: false },
