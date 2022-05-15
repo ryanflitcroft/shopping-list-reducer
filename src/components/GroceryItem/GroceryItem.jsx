@@ -30,7 +30,7 @@ export default function GroceryItem({ item }) {
   if (!isEditing) {
     content = (
       <>
-        <form>
+        <form data-testid="checkbox-form">
           <input
             type="checkbox"
             checked={item.complete}
@@ -38,9 +38,11 @@ export default function GroceryItem({ item }) {
             value={item.item}
             onChange={handleChecked}
           />
-          <label htmlFor={item.item}>{item.item}</label>
+          <label data-testid="checkbox-label" htmlFor={item.item}>
+            {item.item}
+          </label>
         </form>
-        <div>
+        <div aria-label="container for update item button and delete item button">
           <button
             type="button"
             title="Update Item"

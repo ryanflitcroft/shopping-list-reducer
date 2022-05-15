@@ -10,7 +10,10 @@ export default function GroceryList() {
   return (
     <>
       {groceriesList.length ? (
-        <section className={Styles.itemList}>
+        <section
+          className={Styles.itemList}
+          aria-label="container for grocery list"
+        >
           <h2>Don't forget these groceries!</h2>
           <ul>
             {groceriesList.map((item, i) => (
