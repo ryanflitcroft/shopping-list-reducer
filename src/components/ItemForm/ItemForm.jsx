@@ -17,7 +17,7 @@ export default function ItemForm({ addListItem }) {
   return (
     <>
       <form className={Styles.itemForm} onSubmit={handleSubmit}>
-        <label htmlFor="item">Item:</label>
+        <label htmlFor="item">Add an item:</label>
         <input
           type="text"
           name="item"
