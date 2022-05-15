@@ -3,7 +3,8 @@ import { useGroceryContext } from '../../hooks/useGroceryContext';
 import Styles from './ItemForm.css';
 
 export default function ItemForm() {
-  const { addListItem } = useGroceryContext();
+  const { groceriesList, addListItem, deleteAllListItems } =
+    useGroceryContext();
   const [itemValue, setItemValue] = useState('');
 
   const handleSubmit = (e) => {
@@ -16,19 +17,41 @@ export default function ItemForm() {
     setItemValue('');
   };
 
+  const handleDeleteAll = () => {
+    deleteAllListItems();
+  };
+
   return (
     <>
-      <form className={Styles.itemForm} onSubmit={handleSubmit}>
+      <form id="item-form" className={Styles.itemForm} onSubmit={handleSubmit}>
         <label htmlFor="item">Add an item:</label>
         <input
           type="text"
           name="item"
-          placeholder="bananas"
+          placeholder="veggie burgers?"
           value={itemValue}
           onChange={(e) => setItemValue(e.target.value)}
           required
         />
-        <button title="Add Item">➕</button>
+        <div>
+          <button
+            form="item-form"
+            type="submit"
+            title="Add Item"
+            value="Add an item"
+          >
+            ➕
+          </button>
+          <button
+            type="button"
+            title="Delete All Items"
+            value="Delete all items"
+            onClick={handleDeleteAll}
+            disabled={!groceriesList.length}
+          >
+            ␡
+          </button>
+        </div>
       </form>
     </>
   );

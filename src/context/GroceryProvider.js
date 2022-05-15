@@ -3,9 +3,11 @@ import { createContext, useReducer } from 'react';
 export const GroceryContext = createContext();
 
 const initialList = [
-  { id: 1, item: 'veggies', complete: false },
+  { id: 1, item: 'coffee', complete: false },
   { id: 2, item: 'bananas', complete: false },
-  { id: 3, item: 'coffee', complete: false },
+  { id: 3, item: 'tofu', complete: false },
+  { id: 4, item: 'oat milk', complete: false },
+  { id: 5, item: 'space coke', complete: false },
 ];
 
 const groceriesListReducer = (state, action) => {
@@ -25,6 +27,8 @@ const groceriesListReducer = (state, action) => {
         }
         return item;
       });
+    case 'DELETE_ALL':
+      return [];
     default:
       throw new Error(`Action type ${action.type} is not supported.`);
   }
@@ -40,19 +44,24 @@ export default function GroceryProvider({ children }) {
     dispatch({ type: 'ADD_ITEM', payload: item });
   }
 
+  function updateListItem(item) {
+    dispatch({ type: 'UPDATE_ITEM', payload: { item } });
+  }
+
   function deleteListItem(id) {
     dispatch({ type: 'DELETE_ITEM', payload: { id } });
   }
 
-  function updateListItem(item) {
-    dispatch({ type: 'UPDATE_ITEM', payload: { item } });
+  function deleteAllListItems() {
+    dispatch({ type: 'DELETE_ALL' });
   }
 
   const groceryStateAndActions = {
     groceriesList,
     addListItem,
-    deleteListItem,
     updateListItem,
+    deleteListItem,
+    deleteAllListItems,
   };
 
   return (

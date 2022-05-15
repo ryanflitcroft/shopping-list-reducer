@@ -41,10 +41,20 @@ export default function GroceryItem({ item }) {
           <label htmlFor={item.item}>{item.item}</label>
         </form>
         <div>
-          <button type="button" title="Update Item" onClick={toggleIsEditing}>
+          <button
+            type="button"
+            title="Update Item"
+            value="Update item"
+            onClick={toggleIsEditing}
+          >
             ✏️
           </button>
-          <button type="button" title="Delete Item" onClick={handleDeleteItem}>
+          <button
+            type="button"
+            title="Delete Item"
+            value="Delete item"
+            onClick={handleDeleteItem}
+          >
             ❌
           </button>
         </div>
@@ -63,10 +73,20 @@ export default function GroceryItem({ item }) {
           />
         </form>
         <div>
-          <button type="submit" onClick={toggleIsEditing} title="Save Item">
+          <button
+            type="submit"
+            onClick={toggleIsEditing}
+            title="Save Item"
+            value="Save item"
+          >
             💾
           </button>
-          <button type="button" title="Delete Item" onClick={handleDeleteItem}>
+          <button
+            type="button"
+            title="Delete Item"
+            value="Delete item"
+            onClick={handleDeleteItem}
+          >
             ❌
           </button>
         </div>
