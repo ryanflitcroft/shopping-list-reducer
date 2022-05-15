@@ -32,22 +32,22 @@ const groceriesListReducer = (state, action) => {
 };
 
 export default function GroceryList() {
-  const [groceriesList, dispatch] = useReducer(
-    groceriesListReducer,
-    initialList
-  );
+  // const [groceriesList, dispatch] = useReducer(
+  //   groceriesListReducer,
+  //   initialList
+  // );
 
-  function addListItem(item) {
-    dispatch({ type: 'ADD_ITEM', payload: item });
-  }
+  // function addListItem(item) {
+  //   dispatch({ type: 'ADD_ITEM', payload: item });
+  // }
 
-  function deleteListItem(id) {
-    dispatch({ type: 'DELETE_ITEM', payload: { id } });
-  }
+  // function deleteListItem(id) {
+  //   dispatch({ type: 'DELETE_ITEM', payload: { id } });
+  // }
 
-  function updateListItem(item) {
-    dispatch({ type: 'UPDATE_ITEM', payload: { item } });
-  }
+  // function updateListItem(item) {
+  //   dispatch({ type: 'UPDATE_ITEM', payload: { item } });
+  // }
 
   return (
     <>
