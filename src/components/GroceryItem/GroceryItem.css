@@ -1,0 +1,4 @@
+input:checked + label  {
+  transition: text-decoration 200ms;
+  text-decoration: wavy line-through 2px hotpink;
+}

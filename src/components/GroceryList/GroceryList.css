@@ -1,0 +1,28 @@
+.itemList li:nth-child(even) {
+  background-image: linear-gradient(to top, #d5d4d055 0%, #d5d4d055 1%, #eeeeec55 31%, #efeeec55 75%, #e9e9e755 100%);
+}
+
+.itemList li:nth-child(odd) {
+  background-image: linear-gradient(to top, #c4c5c755 0%, #dcdddf55 52%, #ebebeb55 100%);
+}
+
+.itemList li {
+  width: 365px;
+  padding: 0.5em 1em;
+  display: grid;
+  grid-template-columns: 5fr 2fr;
+  align-items: center;
+}
+
+.itemList li label {
+  margin: 0 1em;
+}
+
+.itemList li div {
+  text-align: center;
+}
+
+p.itemList {
+  font-size: 1.5em;
+  margin: 3em 0;
+}
