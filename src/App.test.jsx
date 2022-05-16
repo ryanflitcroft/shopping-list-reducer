@@ -32,4 +32,19 @@ describe('renders component App', () => {
       listItems.length + 1
     );
   });
+
+  it('should remove a listItem onClick of deleteButton', () => {
+    render(
+      <GroceryProvider>
+        <App />
+      </GroceryProvider>
+    );
+    const listItems = screen.getAllByRole('listitem');
+    const deleteButtons = screen.getAllByTitle(/delete item/i);
+    userEvent.click(deleteButtons[0]);
+    expect(screen.getAllByRole('listitem').length).toEqual(
+      listItems.length - 1
+    );
+    expect(screen.getAllByRole('listitem')).not.toContain(listItems[0]);
+  });
 });
