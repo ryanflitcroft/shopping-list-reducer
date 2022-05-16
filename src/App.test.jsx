@@ -1,4 +1,9 @@
-import { render, screen, waitFor } from '@testing-library/react';
+import {
+  render,
+  screen,
+  waitFor,
+  waitForElementToBeRemoved,
+} from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import App from './App';
 import GroceryProvider from './context/GroceryProvider';
@@ -46,5 +51,21 @@ describe('renders component App', () => {
       listItems.length - 1
     );
     expect(screen.getAllByRole('listitem')).not.toContain(listItems[0]);
+  });
+
+  it('should remove all listItems onClick of deleteAllButton and render elements p', () => {
+    render(
+      <GroceryProvider>
+        <App />
+      </GroceryProvider>
+    );
+
+    const deleteAllButton = screen.getByTitle(/delete all items/i);
+    const listItems = screen.getAllByRole('listitem');
+
+    userEvent.click(deleteAllButton);
+    listItems.forEach((el) => waitForElementToBeRemoved(el));
+    const p = screen.getByText(/add some groceries to your list! ☝️/i);
+    expect(screen.getByTitle(/delete all items/i)).toBeDisabled();
   });
 });
